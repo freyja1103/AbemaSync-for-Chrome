@@ -1,4 +1,7 @@
 <?php
+    header("Access-Control-Allow-Headers: Content-Type");
+    header("Access-Control-Allow-Origin: https://abema.tv");
+    header("Content-Type: application/json");
     if (!file_exists('./currentTime.txt')) {
 	    file_put_contents("./currentTime.txt", '{}', LOCK_EX);
     }

@@ -1,15 +1,22 @@
-# AbemaSync
-AbemaTV用のFireFox拡張機能です。複数台で同期視聴することができます。（友達と通話しながら一緒に見れます）  
+# AbemaSync for Chrome
 
-自分用に作りましたが、公開します。  
-Firefoxクライアント、PHPサーバーが必要です。（websocketは使用しません）（lolipopの無料お試しがいいと思います）
+AbemaTV における同時視聴用拡張機能です．
+
+[straight-tamago 氏](https://github.com/straight-tamago)による[AbemaSync](https://github.com/straight-tamago/AbemaSync)の Fork です．
+
+# 動作環境
+
+-   PHP サーバー
+-   Chromium 系ブラウザ
 
 # 使用方法
-- Serverの中身をPHPサーバーに配置してください。
-- Firefoxへのインストールは、ハンバーガー > アドオンとテーマ > 歯車 > アドオンをデバッグ > 一時的なアドオンを読み込む > manifest.jsonを指定
-- 拡張機能の設定で、index.phpのurlを指定する。
-- 複数台で同時に開いて同期されているか確認する。
-- 終わりです。
+
+-   Server の中身を PHP サーバーに配置する．
+-   `chrome://extensions/`にアクセスし，`パッケージ化されていない拡張機能を読み込む`から，Client フォルダを選択する．
+-   拡張機能の設定で，index.php の url を指定する．
+-   複数台で同時に開いて同期されているか確認する．
 
 # 使用上の注意点
-- このプログラムの使用によって生じたいかなる他の損害に対して、作者は一切責任を負いません。
+
+-   このプログラムの使用によって生じたいかなる他の損害に対して，作者は一切責任を負いません．
+-   PHP サーバーは，HTTPS 化されている必要があります．

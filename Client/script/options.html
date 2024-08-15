@@ -1,27 +1,12 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="UTF-8">
-	<style>
-		@media (prefers-color-scheme: dark) {
-			html, body {
-				background-color: rgb(35, 34, 43);
-				color: #fff;
-				height: 100%;
-			}
-		}
-		input[type = text]  {
-			margin-bottom: 10px;
-		}
-		button {
-			margin-top: 10px;
-		}
-	</style>
-</head>
-<body>
-	<h1>サーバーURLを入力</h1>
-	<label>index.php</label>
-	<input type="text" id="indexUrl" value="http://.../index.php">
-	<script src="./options.js"></script>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" type="text/css" href="./index.css" />
+	</head>
+	<body>
+		<label>サーバーURLを入力</label>
+		<input type="text" id="indexUrl" value="https://.../index.php" />
+		<script src="./popup.js"></script>
+	</body>
 </html>

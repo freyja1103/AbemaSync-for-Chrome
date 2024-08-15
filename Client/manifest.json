@@ -1,35 +1,31 @@
 {
-  "description": "AbemaTV用のFireFox拡張機能です。複数台で同期視聴することができます。（通話しながら一緒に見れる）",
-  "manifest_version": 2,
-  "name": "AbemaSync",
-  "version": "1.0",
-  "icons": {
-    "48": "icons/beasts-48.png"
-  },
-  "permissions": [
-    "activeTab",
-    "tabs",
-    "storage",
-    "http://*/*"
-  ],
-  "content_scripts": [
-    {
-      "matches": [
-        "https://abema.tv/*"
-      ],
-      "js": [
-        "/script/onload.js"
-      ]
-    }
-  ],
-  "options_ui": {
-    "page": "/script/options.html",
-    "browser_style": true
-  },
-  "browser_specific_settings": {
-    "gecko": {
-      "id": "straight.tamago@abemasync",
-      "strict_min_version": "42.0"
-    }
-  }
+	"manifest_version": 3,
+	"name": "AbemaSync",
+	"description": "Watch Party Extension for Abema",
+	"version": "1.0",
+	"icons": {
+		"48": "icons/logo_128x128.png"
+	},
+	"permissions": ["activeTab", "tabs", "storage", "http://*/*"],
+	"content_scripts": [
+		{
+			"matches": ["https://abema.tv/*"],
+			"js": ["/script/onload.js"]
+		}
+	],
+	"options_ui": {
+		"page": "/script/options.html",
+		"browser_style": true
+	},
+	"action": {
+		"default_title": "Default Title",
+		"default_popup": "popups/popup.html",
+		"default_icon": {}
+	},
+	"browser_specific_settings": {
+		"gecko": {
+			"id": "freyja.wion@abemasync-chrome",
+			"strict_min_version": "109"
+		}
+	}
 }
