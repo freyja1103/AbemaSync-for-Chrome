@@ -1,11 +1,13 @@
-var move_data;
+const UrlReg = /\d+-\d+_s\d_p\d+/;
+let move_data;
 const udid = getUniqueStr();
 hostRequest(udid);
+let currentUrl;
 setInterval(() => {
+	if (location.pathname === "/" || !UrlReg.test(location.pathname)) return;
 	init();
-	var video = document.querySelectorAll(".com-a-Video__video > video")[0];
+	let video = document.querySelectorAll(".com-a-Video__video > video")[0];
 	console.log(video.currentTime);
-
 	chrome.storage.local.get(["indexUrl"], function (data) {
 		const xhr = new XMLHttpRequest();
 		xhr.open("POST", data.indexUrl);
@@ -19,14 +21,16 @@ setInterval(() => {
 		});
 		xhr.onload = () => {
 			if (xhr.status == 200) {
-				var dict = JSON.parse(xhr.responseText);
+				const dict = JSON.parse(xhr.responseText);
 
 				if (location.href != dict["location"]) {
 					move_data = dict;
 					video.pause();
 					movebtn_func("block", dict["title"]);
 				} else {
-					var lag = Math.abs(video.currentTime - dict["currentTime"]);
+					const lag = Math.abs(
+						video.currentTime - dict["currentTime"]
+					);
 					if (lag > 1) {
 						video.currentTime = dict["currentTime"];
 						console.log("補正: " + lag);
@@ -188,17 +192,17 @@ function init() {
 		console.log(localStorage.getItem("clickLocal"));
 	});
 
-	var elem = document.querySelectorAll(
+	let elem = document.querySelectorAll(
 		".com-vod-VODRecommendedContentsContainerView__player"
 	)[0];
 	elem.addEventListener("mousedown", function (e) {
 		hostRequest(udid);
 	});
 
-	var elem_parent = document.querySelectorAll(
+	const elem_parent = document.querySelectorAll(
 		".com-feature-area-FeatureListSection__title"
 	)[0].parentElement;
-	var elem = elem_parent.querySelectorAll("li")[0];
+	elem = elem_parent.querySelectorAll("li")[0];
 	elem.addEventListener("mousedown", function (e) {
 		hostRequest(udid);
 	});
@@ -212,7 +216,7 @@ function movebtn_func(display, title) {
 }
 
 function getUniqueStr(myStrong) {
-	var strong = 1000;
+	const strong = 1000;
 	if (myStrong) strong = myStrong;
 	return (
 		new Date().getTime().toString(16) +
@@ -223,7 +227,6 @@ function getUniqueStr(myStrong) {
 chrome.storage.local.get(["indexUrl"], function (data) {
 	if (data.indexUrl == undefined) {
 		alert("AbemaSync: 設定画面からサーバーURLを指定する必要があります。");
-		location.href =
-			"chrome://extensions/?options=eehjnabljnjclngclpfeojfibeoknlbd";
+		location.href = "chrome://extensions/";
 	}
 });
