@@ -11,13 +11,13 @@
     $pre_data = json_decode(file_get_contents("./currentTime.txt"), true);
 
     if ($_GET["set"] == true) {
-        $pre_data["host"] = $dict["udid"];
+        $pre_data["host"] = $dict["uuid"];
         file_put_contents("./currentTime.txt", json_encode($pre_data));
         echo "ok";
     }else{
-        $pre_data["data"][$dict["udid"]] = $dict;
+        $pre_data["data"][$dict["uuid"]] = $dict;
         if (!isset($pre_data["host"])) {
-            $pre_data["host"] = $dict["udid"];
+            $pre_data["host"] = $dict["uuid"];
         }
         file_put_contents("./currentTime.txt", json_encode($pre_data));
         echo json_encode($pre_data["data"][$pre_data["host"]]);

@@ -10,7 +10,7 @@
 	"content_scripts": [
 		{
 			"matches": ["https://abema.tv/*"],
-			"js": ["/script/onload.js"]
+			"js": ["index.js"]
 		}
 	],
 	"options_ui": {
